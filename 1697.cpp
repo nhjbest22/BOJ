@@ -9,8 +9,8 @@ int dy[4] = {0,1,0,-1};
 int dist[100002];
 
 int main (){
-    //ios::sync_with_stdio(0);
-    //cin.tie(0);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
     int x,y; // x = 수빈 , y = 동생
     cin>>x>>y;
     queue <int> Q; Q.push(x); 
