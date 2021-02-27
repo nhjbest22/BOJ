@@ -46,6 +46,7 @@ pll EXGCD(ll a, ll b) {
   return { t.second,t.first - t.second*(a / b) };
 }
 bool OOB(ll x, ll y, ll N, ll M) { return 0 > x || x >= N || 0 > y || y >= M; }
+#define visit VISIT
 #define X first
 #define Y second
 #define rep(i,a,b) for(int i = a; i < b; i++)
