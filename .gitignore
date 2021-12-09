@@ -4,4 +4,4 @@ test/
 
 .vscode/
 
-goorm.*
+goorm.manifest
