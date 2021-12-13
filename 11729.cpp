@@ -74,9 +74,22 @@ bool OOB(ll x, ll y, ll N, ll M) { return 0 > x || x >= N || 0 > y || y >= M; }
 #define pf6l(a,b,c,d,e,f) cout << (a) << ' ' << (b) << ' '<< (c) << ' '<< (d) << ' '<< (e) << ' ' << (f) << '\n'
 #define pfvec(V) for(auto const &t : V) pf1(t)
 #define pfvecl(V) for(auto const &t : V) pf1(t); pf0l()
-#define debug(x) cout << #x << " is " << x << '\n'
+
+void func (int a, int b, int n){
+	if(n==1) {
+		cout<<a<<' '<<b<<'\n'; return ;
+	}//base condition
+	
+	func(a,6-a-b,n-1); //move n-1 block to 6-a-b
+	cout<<a<<' '<<b<<'\n'; // move nth block to b
+	func(6-a-b,b,n-1); //move n-1 block to b
+}
 
 int main (){
     ios::sync_with_stdio(0); cin.tie(0);
+	int a;
+	cin>>a;
+	cout<<(1<<a)-1<<'\n';
+	func(1,3,a);
     return 0;
 }
