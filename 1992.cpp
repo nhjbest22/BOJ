@@ -78,8 +78,6 @@ bool OOB(ll x, ll y, ll N, ll M) { return 0 > x || x >= N || 0 > y || y >= M; }
 
 string str[100];
 
-void CheckDivison(int,int,int);
-
 void solve(int len, int r, int c){
     bool Zero = true;
     bool One = true;
