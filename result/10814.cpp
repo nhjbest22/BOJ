@@ -86,7 +86,7 @@ int main (){
   }
   stable_sort(p, p+N, [&](pair<int,string> a, pair<int, string> b){
     return a.first < b.first;//Using lamda function which looks simillar as callback fn
-  });
+  });//sort function -> unstable sort, have to use stable_sort to maintain initial order
   rep(i,0,N){
     cout<<p[i].first<<' '<<p[i].second<<'\n';
   }

@@ -7,3 +7,5 @@ test/
 goorm.manifest
 
 init_code.cpp
+
+vsix
