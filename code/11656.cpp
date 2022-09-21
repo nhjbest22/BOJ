@@ -76,18 +76,17 @@ bool OOB(ll x, ll y, ll N, ll M) { return 0 > x || x >= N || 0 > y || y >= M; }
 #define pfvecl(V) for(auto const &t : V) pf1(t); pf0l()
 #define debug(x) cout << #x << " is " << x << '\n'
 
-int arr[1000005];
+string s[2000];
 
 int main (){
   ios::sync_with_stdio(0); cin.tie(0);
-  arr[1] = 1; arr[2] = 2; arr[3] = 4; arr[4] = 7;
-  rep(i,5,11){
-    arr[i] = arr[i-1] + arr[i-2] + arr[i-3]; // 점화식으로 유도
+  string str; cin>>str;
+  rep(i,0,str.length()){
+    s[i] = str.substr(i);//substr(startPos,cnt) cnt != intPos str[Pos:]
   }
-  int T; cin>>T;
-  while(T--){
-    int num; cin>>num;
-    cout<<arr[num]<<'\n';
+  sort(s,s+str.length());
+  rep(i,0,str.length()){
+    cout<<s[i]<<'\n';
   }
   return 0;
 }

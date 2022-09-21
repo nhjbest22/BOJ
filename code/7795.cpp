@@ -76,18 +76,31 @@ bool OOB(ll x, ll y, ll N, ll M) { return 0 > x || x >= N || 0 > y || y >= M; }
 #define pfvecl(V) for(auto const &t : V) pf1(t); pf0l()
 #define debug(x) cout << #x << " is " << x << '\n'
 
-int arr[1000005];
+int T;int sizeA[20005], sizeB[20005];
 
 int main (){
   ios::sync_with_stdio(0); cin.tie(0);
-  arr[1] = 1; arr[2] = 2; arr[3] = 4; arr[4] = 7;
-  rep(i,5,11){
-    arr[i] = arr[i-1] + arr[i-2] + arr[i-3]; // 점화식으로 유도
-  }
-  int T; cin>>T;
+  cin>>T;
   while(T--){
-    int num; cin>>num;
-    cout<<arr[num]<<'\n';
+    int N,M; cin>>N>>M;
+    rep(i,0,N){
+      cin>>sizeA[i];
+    }
+    rep(i,0,M){
+      cin>>sizeB[i];
+    }
+    sort(sizeA, sizeA+N, [&](int a, int b){
+      return a > b;
+    });
+    sort(sizeB, sizeB + M, [&](int a, int b){
+      return a < b;
+    });
+    int Cnt = 0; int idx = M-1;
+    rep(i,0,N){
+      while(idx >= 0 && sizeA[i] <= sizeB[idx]) idx--; //idx>=0 => idx가 index로의 역활을 하는지 판별, idx먼저 판별해야 out-of-range 같은 경우가 X
+      Cnt += idx+1;
+    }
+    cout<<Cnt<<'\n';
   }
   return 0;
 }

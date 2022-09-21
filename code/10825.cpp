@@ -76,18 +76,24 @@ bool OOB(ll x, ll y, ll N, ll M) { return 0 > x || x >= N || 0 > y || y >= M; }
 #define pfvecl(V) for(auto const &t : V) pf1(t); pf0l()
 #define debug(x) cout << #x << " is " << x << '\n'
 
-int arr[1000005];
+tuple<string, int, int, int> t[100005];
 
 int main (){
   ios::sync_with_stdio(0); cin.tie(0);
-  arr[1] = 1; arr[2] = 2; arr[3] = 4; arr[4] = 7;
-  rep(i,5,11){
-    arr[i] = arr[i-1] + arr[i-2] + arr[i-3]; // 점화식으로 유도
+  int N; cin>>N;
+  rep(i,0,N){
+    int Lang, Eng, Math; string name;
+    cin>>name>>Lang>>Eng>>Math;
+    t[i] = make_tuple(name, Lang, Eng, Math);
   }
-  int T; cin>>T;
-  while(T--){
-    int num; cin>>num;
-    cout<<arr[num]<<'\n';
+  sort(t, t+N, [&](tuple<string, int, int, int>a, tuple<string, int, int, int>b){
+    if(get<1>(a)!=get<1>(b)) return get<1>(a) > get<1>(b);
+    if(get<2>(a) != get<2>(b)) return get<2>(a) < get<2>(b);
+    if(get<3>(a) != get<3>(b)) return get<3>(a) > get<3>(b);
+    return get<0>(a) < get<0>(b);
+  });//a가 b의 앞에 와야 할때 true 를 반환, 나머지는 false를 반환해야 함.
+  rep(i,0,N){
+    cout<<get<0>(t[i])<<'\n';
   }
   return 0;
 }
