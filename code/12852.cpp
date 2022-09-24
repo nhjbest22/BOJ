@@ -76,21 +76,29 @@ bool OOB(ll x, ll y, ll N, ll M) { return 0 > x || x >= N || 0 > y || y >= M; }
 #define pfvecl(V) for(auto const &t : V) pf1(t); pf0l()
 #define debug(x) cout << #x << " is " << x << '\n'
 
-int arr[100005];
-int d[100005]; //d[i] => i까지의 수열의 부분합 중 가장 큰 수, 단 i번째 수는 무조건 더해야 함.
-//d[i-1] + arr[i] 보다 arr[i]가 클 경우 굳이 부분합을 가져가지 않고 수열값만 가져가도 문제 x
+int D[1000005];
+int pre[1000005];
 
 int main (){
   ios::sync_with_stdio(0); cin.tie(0);
   int N; cin>>N;
-  rep(i,1,N+1){
-    cin>>arr[i];
-  }
-  d[1] = arr[1];
+  D[2] = 1;
   rep(i,2,N+1){
-    d[i] = max(d[i-1]+ arr[i], arr[i]); 
+    D[i] = D[i-1] + 1;
+    pre[i] = i-1;
+    if(i%2 == 0 && (D[i] > D[i/2] + 1)){
+      D[i] = D[i/2] + 1;
+      pre[i] = i/2;
+    }
+    if(i%3 == 0 && (D[i] > D[i/3] + 1)){
+      D[i] = D[i/3] + 1;
+      pre[i] = i/3;
+    }
   }
-  cout<<*(max_element(d+1, d+N+1));
+  cout<<D[N]<<'\n'<<N<<' ';
+  while(pre[N]){
+    cout<<pre[N]<<' ';
+    N = pre[N];
+  }
   return 0;
-
 }
